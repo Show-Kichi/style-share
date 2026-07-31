@@ -212,3 +212,82 @@ form button:hover {
 .favorite-form button {
     background-color: #222222;
 }
+.radio-option {
+    display: block;
+    margin: 12px 0;
+    font-weight: normal;
+}
+
+.radio-option input {
+    width: auto;
+    margin-right: 8px;
+}
+
+fieldset {
+    margin-bottom: 20px;
+    padding: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+.login-guide {
+    max-width: 600px;
+    padding: 16px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.survey-chart {
+    max-width: 900px;
+    margin-top: 28px;
+    padding: 24px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+
+.chart-row {
+    display: grid;
+    grid-template-columns: 110px 1fr 130px;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.chart-label {
+    font-weight: bold;
+}
+
+.chart-area {
+    height: 34px;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: #eeeeee;
+}
+
+.chart-bar {
+    box-sizing: border-box;
+    min-width: 0;
+    height: 100%;
+    padding: 7px 10px;
+    border-radius: 6px;
+    background-color: #222222;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.chart-value {
+    font-size: 14px;
+}
+
+@media (max-width: 700px) {
+    .chart-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .chart-value {
+        margin-bottom: 8px;
+    }
+}
