@@ -89,27 +89,31 @@ require_once __DIR__ . '/includes/header.php';
 <?php endif; ?>
 
 <section class="hero">
-    <p class="hero-label">GLOBAL FASHION COMMUNITY</p>
+    <div class="hero-content">
+        <p class="hero-label">
+            GLOBAL FASHION COMMUNITY
+        </p>
 
-    <h1>
-        世界のスタイルと、<br>
-        新しい自分に出会う。
-    </h1>
+        <h1>
+            まだ知らない<br>
+            スタイルへ。
+        </h1>
 
-    <p class="hero-description">
-        StyleShareは、国や地域を越えて
-        コーディネートを共有できるファッションSNSです。
-    </p>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="create_post.php" class="hero-button">
+                コーデを投稿する
+            </a>
+        <?php else: ?>
+            <a href="register.php" class="hero-button">
+                StyleShareに参加する
+            </a>
+        <?php endif; ?>
+    </div>
 
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <a href="create_post.php" class="hero-button">
-            コーデを投稿する
-        </a>
-    <?php else: ?>
-        <a href="register.php" class="hero-button">
-            StyleShareに参加する
-        </a>
-    <?php endif; ?>
+    <div class="hero-decoration" aria-hidden="true">
+        <span class="hero-circle hero-circle-one"></span>
+        <span class="hero-circle hero-circle-two"></span>
+    </div>
 </section>
 
 <section class="filter-section">
