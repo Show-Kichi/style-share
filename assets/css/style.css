@@ -291,3 +291,38 @@ fieldset {
         margin-bottom: 8px;
     }
 }
+.filter-section {
+    margin: 32px 0;
+}
+
+.filter-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: end;
+    gap: 16px;
+    max-width: none;
+}
+
+.filter-form div {
+    margin-bottom: 0;
+}
+
+.filter-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.filter-buttons a {
+    color: #444444;
+}
+
+@media (max-width: 700px) {
+    .filter-form {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-buttons {
+        align-items: flex-start;
+    }
+}
