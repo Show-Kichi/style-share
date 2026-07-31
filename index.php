@@ -88,13 +88,28 @@ require_once __DIR__ . '/includes/header.php';
     </p>
 <?php endif; ?>
 
-<section>
-    <h2>世界のコーディネート</h2>
+<section class="hero">
+    <p class="hero-label">GLOBAL FASHION COMMUNITY</p>
 
-    <p>
-        国や地域を越えて、さまざまなファッションを
-        発見できるコーデ掲示板です。
+    <h1>
+        世界のスタイルと、<br>
+        新しい自分に出会う。
+    </h1>
+
+    <p class="hero-description">
+        StyleShareは、国や地域を越えて
+        コーディネートを共有できるファッションSNSです。
     </p>
+
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <a href="create_post.php" class="hero-button">
+            コーデを投稿する
+        </a>
+    <?php else: ?>
+        <a href="register.php" class="hero-button">
+            StyleShareに参加する
+        </a>
+    <?php endif; ?>
 </section>
 
 <section class="filter-section">
@@ -189,42 +204,24 @@ require_once __DIR__ . '/includes/header.php';
                     </a>
 
                     <div class="post-card-body">
-                        <p class="post-user">
-                            @<?= htmlspecialchars(
-                                $post['username'],
-                                ENT_QUOTES,
-                                'UTF-8'
-                            ) ?>
-                        </p>
+                        <div class="post-meta">
+                            <span>
+                                <?= h($post['country']) ?>
+                                ・
+                                <?= h($post['city']) ?>
+                            </span>
+
+                            <span>
+                                #<?= h($post['style_category']) ?>
+                            </span>
+                        </div>
 
                         <h3>
-                            <?= htmlspecialchars(
-                                $post['caption'],
-                                ENT_QUOTES,
-                                'UTF-8'
-                            ) ?>
+                            <?= h($post['caption']) ?>
                         </h3>
 
-                        <p>
-                            <?= htmlspecialchars(
-                                $post['country'],
-                                ENT_QUOTES,
-                                'UTF-8'
-                            ) ?>
-                            ・
-                            <?= htmlspecialchars(
-                                $post['city'],
-                                ENT_QUOTES,
-                                'UTF-8'
-                            ) ?>
-                        </p>
-
-                        <p>
-                            #<?= htmlspecialchars(
-                                $post['style_category'],
-                                ENT_QUOTES,
-                                'UTF-8'
-                            ) ?>
+                        <p class="post-user">
+                            by @<?= h($post['username']) ?>
                         </p>
                     </div>
                 </article>
