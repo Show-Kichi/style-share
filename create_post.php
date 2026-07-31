@@ -29,6 +29,10 @@ $allowedCountries = [
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once __DIR__ . '/includes/functions.php';
+
+    verifyCsrfToken($_POST['csrf_token'] ?? null);
+
     $caption = trim($_POST['caption'] ?? '');
     $styleCategory = $_POST['style_category'] ?? '';
     $country = $_POST['country'] ?? '';
@@ -158,6 +162,11 @@ require_once __DIR__ . '/includes/header.php';
         method="post"
         enctype="multipart/form-data"
     >
+    <input
+    type="hidden"
+    name="csrf_token"
+    value="<?= h(getCsrfToken()) ?>"
+>
         <div>
             <label for="image">コーデ画像</label>
             <input

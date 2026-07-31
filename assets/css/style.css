@@ -326,3 +326,59 @@ fieldset {
         align-items: flex-start;
     }
 }
+a {
+    color: inherit;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    transition: opacity 0.2s;
+}
+
+img {
+    max-width: 100%;
+}
+
+.error-message,
+.success-message {
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 16px 20px;
+    }
+
+    main {
+        padding: 24px 16px;
+    }
+
+    .post-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .post-card img {
+        height: 220px;
+    }
+
+    .post-card-body {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    .post-grid {
+        grid-template-columns: 1fr;
+    }
+}

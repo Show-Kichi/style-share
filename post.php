@@ -162,6 +162,11 @@ require_once __DIR__ . '/includes/header.php';
         method="post"
         class="favorite-form"
     >
+    <input
+    type="hidden"
+    name="csrf_token"
+    value="<?= h(getCsrfToken()) ?>"
+>
         <input
             type="hidden"
             name="post_id"
@@ -238,6 +243,12 @@ require_once __DIR__ . '/includes/header.php';
             method="post"
             class="comment-form"
         >
+        <input
+    type="hidden"
+    name="csrf_token"
+    value="<?= h(getCsrfToken()) ?>"
+>
+
             <input
                 type="hidden"
                 name="post_id"

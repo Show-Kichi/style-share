@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/includes/db.php';
+require_once __DIR__ . '/includes/functions.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -41,6 +42,8 @@ if (isset($_SESSION['user_id'])) {
 
 // アンケートが送信された場合
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verifyCsrfToken($_POST['csrf_token'] ?? null);
+
     if (!isset($_SESSION['user_id'])) {
         header('Location: login.php');
         exit;
@@ -92,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':style_category' => $selectedStyle,
         ]);
 
-        header('Location: survey_result.php?voted=1');
+        header('Location: survey_results.php?voted=1');
         exit;
     }
 }
@@ -131,6 +134,11 @@ require_once __DIR__ . '/includes/header.php';
         <?php endif; ?>
 
         <form action="survey.php" method="post">
+            <input
+            type="hidden"
+            name="csrf_token"
+            value="<?= h(getCsrfToken()) ?>"
+            >
             <fieldset>
                 <legend>
                     好きなファッションスタイル
