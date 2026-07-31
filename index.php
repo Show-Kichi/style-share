@@ -89,6 +89,8 @@ require_once __DIR__ . '/includes/header.php';
 <?php endif; ?>
 
 <section class="hero">
+    <div class="hero-shape" aria-hidden="true"></div>
+
     <div class="hero-content">
         <p class="hero-label">
             GLOBAL FASHION COMMUNITY
@@ -108,11 +110,6 @@ require_once __DIR__ . '/includes/header.php';
                 StyleShareに参加する
             </a>
         <?php endif; ?>
-    </div>
-
-    <div class="hero-decoration" aria-hidden="true">
-        <span class="hero-circle hero-circle-one"></span>
-        <span class="hero-circle hero-circle-two"></span>
     </div>
 </section>
 
