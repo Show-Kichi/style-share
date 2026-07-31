@@ -82,6 +82,12 @@ $posts = $stmt->fetchAll();
 require_once __DIR__ . '/includes/header.php';
 ?>
 
+<?php if (isset($_GET['posted'])): ?>
+    <p class="success-message">
+        コーディネートを投稿しました。
+    </p>
+<?php endif; ?>
+
 <section>
     <h2>世界のコーディネート</h2>
 

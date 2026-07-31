@@ -38,6 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $country = $_POST['country'] ?? '';
     $city = trim($_POST['city'] ?? '');
 
+    if (mb_strlen($city) > 50) {
+        $errors[] = '都市名は50文字以内で入力してください。';
+    }
+
     if ($caption === '') {
         $errors[] = 'コーデの説明を入力してください。';
     } elseif (mb_strlen($caption) > 200) {
@@ -77,7 +81,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors[] = 'JPEG、PNG、WebP画像のみ投稿できます。';
         }
 
-        if ($_FILES['image']['size'] > 5 * 1024 * 1024) {
+        if ($_FILES['image']['size'] <= 0) {
+            $errors[] = '画像ファイルが空です。';
+        } elseif ($_FILES['image']['size'] > 5 * 1024 * 1024) {
             $errors[] = '画像サイズは5MB以下にしてください。';
         }
 

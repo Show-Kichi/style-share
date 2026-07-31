@@ -187,7 +187,7 @@ require_once __DIR__ . '/includes/header.php';
     <?php endif; ?>
 
     <p>
-        <a href="survey_result.php">
+        <a href="survey_results.php">
             アンケート結果を見る
         </a>
     </p>
