@@ -46,6 +46,37 @@ if ($post === false) {
     http_response_code(404);
     exit('投稿が見つかりません。');
 }
+// お気に入り数を取得
+$stmt = $db->prepare(
+    'SELECT COUNT(*)
+     FROM favorites
+     WHERE post_id = :post_id'
+);
+
+$stmt->execute([
+    ':post_id' => $postId,
+]);
+
+$favoriteCount = (int)$stmt->fetchColumn();
+
+// ログインユーザがお気に入り済みか確認
+$isFavorite = false;
+
+if (isset($_SESSION['user_id'])) {
+    $stmt = $db->prepare(
+        'SELECT 1
+         FROM favorites
+         WHERE user_id = :user_id
+           AND post_id = :post_id'
+    );
+
+    $stmt->execute([
+        ':user_id' => (int)$_SESSION['user_id'],
+        ':post_id' => $postId,
+    ]);
+
+    $isFavorite = $stmt->fetch() !== false;
+}
 
 // コメント一覧を取得
 $stmt = $db->prepare(
@@ -122,6 +153,34 @@ require_once __DIR__ . '/includes/header.php';
                     'UTF-8'
                 ) ?>
             </p>
+            <p>
+                お気に入り数：<?= $favoriteCount ?>
+            </p>
+            <?php if (isset($_SESSION['user_id'])): ?>
+    <form
+        action="favorite.php"
+        method="post"
+        class="favorite-form"
+    >
+        <input
+            type="hidden"
+            name="post_id"
+            value="<?= (int)$post['id'] ?>"
+        >
+
+        <button type="submit">
+            <?= $isFavorite
+                ? 'お気に入りを解除'
+                : 'お気に入りに追加' ?>
+        </button>
+    </form>
+<?php else: ?>
+    <p>
+        お気に入り登録には
+        <a href="login.php">ログイン</a>
+        が必要です。
+    </p>
+<?php endif; ?>
         </div>
     </article>
 </section>

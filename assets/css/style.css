@@ -200,3 +200,15 @@ form button:hover {
         grid-template-columns: 1fr;
     }
 }
+.favorite-form {
+    width: auto;
+    max-width: none;
+    margin-top: 16px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.favorite-form button {
+    background-color: #222222;
+}
