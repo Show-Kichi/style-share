@@ -97,8 +97,8 @@ require_once __DIR__ . '/includes/header.php';
         </p>
 
         <h1>
-            まだ知らない<br>
-            スタイルへ。
+            DISCOVER<br>
+            YOUR NEXT STYLE
         </h1>
 
         <?php if (isset($_SESSION['user_id'])): ?>
@@ -230,6 +230,8 @@ require_once __DIR__ . '/includes/header.php';
         </div>
     <?php endif; ?>
 </section>
+
+<script src="assets/js/hero-morph.js"></script>
 
 <?php
 require_once __DIR__ . '/includes/footer.php';
