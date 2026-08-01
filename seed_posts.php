@@ -85,7 +85,6 @@ try {
         ['coordinate13.png', 'パリの洗練されたストリートコーデ', 'ストリート', 'フランス', 'パリ'],
         ['coordinate14.png', '自然体で着られるフレンチカジュアル', 'カジュアル', 'フランス', 'リヨン'],
         ['coordinate15.png', '形の美しさを意識したモードコーデ', 'モード', 'フランス', 'パリ'],
-        ['coordinate16.png', 'クラシックなアイテムを使った古着コーデ', '古着', 'フランス', 'マルセイユ'],
     ];
 
     $stmt = $db->prepare(
@@ -119,7 +118,7 @@ try {
 
     $db->commit();
 
-    echo "初期投稿20件を登録しました。\n";
+    echo "初期投稿15件を登録しました。\n";
 } catch (Throwable $e) {
     if ($db->inTransaction()) {
         $db->rollBack();
