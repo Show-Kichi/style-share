@@ -503,6 +503,11 @@ main {
             #0b5554,
             #4c2678
         );
+    background-repeat: no-repeat;
+    background-size:
+        145% 145%,
+        145% 145%,
+        100% 100%;
     animation:
         hero-morph 28s cubic-bezier(0.45, 0, 0.55, 1) infinite,
         hero-gradient 14s ease-in-out infinite;
@@ -524,8 +529,12 @@ main {
             rgba(174, 119, 255, 0.72),
             transparent 40%
         );
-    opacity: 0;
-    animation: hero-color 22s ease-in-out 3s infinite;
+    background-repeat: no-repeat;
+    background-size:
+        155% 155%,
+        155% 155%;
+    opacity: 0.12;
+    animation: hero-color 18s ease-in-out infinite;
 }
 
 .hero-shape.is-randomized {
@@ -648,15 +657,15 @@ main {
     0%,
     100% {
         background-position:
-            75% 24%,
-            24% 78%,
+            100% 0,
+            0 100%,
             center;
     }
 
     50% {
         background-position:
-            55% 38%,
-            45% 62%,
+            0 100%,
+            100% 0,
             center;
     }
 }
@@ -664,23 +673,35 @@ main {
 @keyframes hero-color {
     0%,
     100% {
-        opacity: 0;
+        background-position:
+            0 0,
+            100% 100%;
+        opacity: 0.12;
         transform: scale(1);
     }
 
-    35% {
-        opacity: 0.38;
-        transform: scale(1.08);
+    30% {
+        background-position:
+            100% 30%,
+            0 70%;
+        opacity: 0.88;
+        transform: scale(1.06);
     }
 
-    65% {
-        opacity: 0.82;
-        transform: scale(1.16);
+    60% {
+        background-position:
+            70% 100%,
+            30% 0;
+        opacity: 0.32;
+        transform: scale(1.12);
     }
 
-    85% {
-        opacity: 0.25;
-        transform: scale(1.05);
+    82% {
+        background-position:
+            15% 60%,
+            85% 40%;
+        opacity: 1;
+        transform: scale(1.04);
     }
 }
 
