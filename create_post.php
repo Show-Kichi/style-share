@@ -38,13 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $country = $_POST['country'] ?? '';
     $city = trim($_POST['city'] ?? '');
 
-    if (mb_strlen($city) > 50) {
+    if (preg_match('/\A.{0,50}\z/u', $city) !== 1) {
         $errors[] = '都市名は50文字以内で入力してください。';
     }
 
     if ($caption === '') {
         $errors[] = 'コーデの説明を入力してください。';
-    } elseif (mb_strlen($caption) > 200) {
+   } elseif (preg_match('/\A.{0,200}\z/u', $caption) !== 1) {
         $errors[] = '説明は200文字以内で入力してください。';
     }
 

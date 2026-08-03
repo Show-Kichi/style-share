@@ -2,3 +2,7 @@
 # SQLite database files
 data/*.db
 data/*.db-*
+
+# User uploaded images
+uploads/*
+!uploads/.gitkeep

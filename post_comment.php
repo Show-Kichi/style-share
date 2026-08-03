@@ -28,7 +28,7 @@ if ($content === '') {
     exit('コメントを入力してください。');
 }
 
-if (mb_strlen($content) > 300) {
+if (preg_match('/\A.{0,300}\z/u', $content) !== 1) {
     exit('コメントは300文字以内で入力してください。');
 }
 
