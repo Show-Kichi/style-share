@@ -3,9 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/includes/db.php';
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+require_once __DIR__ . '/includes/session.php';
 
 $errors = [];
 $username = '';
