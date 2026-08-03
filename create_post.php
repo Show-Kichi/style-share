@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $savePath = $uploadDirectory . $fileName;
 
             if (!is_dir($uploadDirectory)) {
-                mkdir($uploadDirectory, 0777, true);
+                mkdir($uploadDirectory, 0755, true);
             }
 
             if (!move_uploaded_file($temporaryPath, $savePath)) {
