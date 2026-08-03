@@ -13,7 +13,7 @@ function getDb(): PDO
         return $db;
     }
 
-    $databasePath = __DIR__ . '/../data/style_share.db';
+    $databasePath = dirname(__DIR__, 3) . '/style-share-data/style_share.db';
     $dataDirectory = dirname($databasePath);
 
     // dataフォルダが存在しない場合は作成する
