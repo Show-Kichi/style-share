@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // ユーザ名の確認
     if ($username === '') {
         $errors[] = 'ユーザ名を入力してください。';
-    } elseif (mb_strlen($username) < 2 || mb_strlen($username) > 30) {
+    } elseif (preg_match('/\A.{2,30}\z/u', $username) !== 1) {
         $errors[] = 'ユーザ名は2文字以上30文字以内で入力してください。';
     }
 
