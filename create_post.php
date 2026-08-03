@@ -56,12 +56,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = '国を選択してください。';
     }
 
-    if (
-        !isset($_FILES['image'])
-        || $_FILES['image']['error'] !== UPLOAD_ERR_OK
-    ) {
+    $imageError = $_FILES['image']['error'] ?? UPLOAD_ERR_NO_FILE;
+
+switch ($imageError) {
+    case UPLOAD_ERR_OK:
+        break;
+
+    case UPLOAD_ERR_INI_SIZE:
+    case UPLOAD_ERR_FORM_SIZE:
+        $errors[] = '画像サイズは2MB以下にしてください。';
+        break;
+
+    case UPLOAD_ERR_NO_FILE:
         $errors[] = '画像を選択してください。';
-    }
+        break;
+
+    default:
+        $errors[] = '画像のアップロードに失敗しました。';
+}
 
     $imagePath = '';
 
@@ -83,9 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($_FILES['image']['size'] <= 0) {
             $errors[] = '画像ファイルが空です。';
-        } elseif ($_FILES['image']['size'] > 5 * 1024 * 1024) {
-            $errors[] = '画像サイズは5MB以下にしてください。';
-        }
+        } elseif ($_FILES['image']['size'] > 2 * 1024 * 1024) {
+            $errors[] = '画像サイズは2MB以下にしてください。';
+            }
 
         if ($errors === []) {
             $extension = $extensions[$mimeType];
