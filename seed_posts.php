@@ -37,11 +37,10 @@ try {
         );
 
         $stmt->execute([
-            ':username' => 'styleshare_staff',
             ':password_hash' => password_hash(
-                'StyleShare_2026!',
+                bin2hex(random_bytes(32)),
                 PASSWORD_DEFAULT
-            ),
+                ),
             ':country' => '日本',
         ]);
 
