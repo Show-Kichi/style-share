@@ -93,7 +93,6 @@ try {
     );
 
     echo "データベースとテーブルを作成しました。\n";
-    echo "保存場所: " . __DIR__ . "/data/style_share.db\n";
 } catch (PDOException $e) {
     echo "データベースの作成に失敗しました。\n";
     echo $e->getMessage() . "\n";
